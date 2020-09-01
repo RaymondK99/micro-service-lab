@@ -1,0 +1,12 @@
+{
+     "type": "record",
+     "namespace": "se.raykal.msdemo.model",
+     "name": "MsDemoMessage",
+     "version": "1",
+     "fields": [
+       { "name": "message", "type": "string", "doc": "Id of the order filed" },
+       { "name": "customer_id", "type": "string", "doc": "Id of the customer" },
+       { "name": "number", "type": "int", "doc": "Number" }
+
+     ]
+}
