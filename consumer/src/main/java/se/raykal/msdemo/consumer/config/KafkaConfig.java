@@ -9,7 +9,7 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import se.raykal.msdemo.model.JsonDemoMessage;
+import se.raykal.msdemo.model.OrderBookUpdate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,14 +36,14 @@ class KafkaConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, JsonDemoMessage> consumerFactory() {
+    public ConsumerFactory<String, OrderBookUpdate> consumerFactory() {
         return new DefaultKafkaConsumerFactory(consumerConfigs(), new StringDeserializer(),
-                new JsonDeserializer<>(JsonDemoMessage.class));
+                new JsonDeserializer<>(OrderBookUpdate.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, JsonDemoMessage> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, JsonDemoMessage> factory =
+    public ConcurrentKafkaListenerContainerFactory<String, OrderBookUpdate> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, OrderBookUpdate> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
 
