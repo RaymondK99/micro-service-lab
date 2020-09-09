@@ -9,7 +9,7 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import se.raykal.msdemo.model.JsonDemoMessage;
+import se.raykal.msdemo.model.OrderBookUpdate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,12 +39,12 @@ class KafkaConfig {
     }
 
     @Bean
-    public ProducerFactory<String, JsonDemoMessage> producerFactory() {
+    public ProducerFactory<String, OrderBookUpdate> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
     @Bean
-    public KafkaTemplate<String, JsonDemoMessage> kafkaTemplate() {
+    public KafkaTemplate<String, OrderBookUpdate> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
